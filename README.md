@@ -6,10 +6,12 @@ This project contains both build version and Netbeans Project for the System.
 #For using in Netbeans : 
  Use the link https://github.com/concept-inversion/Web_portal_Cluster.git for cloning it.
  
- # For running it:
-   Requirements :
+ 
+  # Requirements :
      JRE should be pre-installed.
-     
-   Running it:
+    
+    
+   # Running it:
    1. First of all , run the jar file from the worker folder. It runs the client which will perform works provided by the server.
-   2. Now, run the jar file from the Cluster Start folder. It runs the main server which provides a GUI feature for using the              system. 
+   2. Now, run the jar file from the Cluster Start folder. It runs the main server which provides a GUI feature for using the              system.
+   3. Start the web portal for monitoring the work in the server. 
