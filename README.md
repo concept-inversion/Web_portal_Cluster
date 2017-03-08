@@ -9,6 +9,7 @@ This project contains both build version and Netbeans Project for the System.
  # For running it:
    Requirements :
      JRE should be pre-installed.
+     
    Running it:
    1. First of all , run the jar file from the worker folder. It runs the client which will perform works provided by the server.
    2. Now, run the jar file from the Cluster Start folder. It runs the main server which provides a GUI feature for using the              system. 
