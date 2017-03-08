@@ -8,7 +8,7 @@ This project contains both build version and Netbeans Project for the System.
  
 #For Running it :
  
-   JRE should be pre-installed.
+   JRE should be pre-installed. Please ensure that D drive is available in your computer for storing log files.
  1. First of all ,download folder worker file and run th jar file from the worker folder(don't run jar file directly without lib folder). It runs the client which will perform works provided by the server.You can run more than one instant of worker for better performance. (Note: Worker runs in backgroud)
  2. Now, run the jar file from the Cluster Start folder(with the lib folder ). It runs the main server which provides a GUI feature for using the system.
  3. Start the web portal(see below for setting up webportal) for monitoring the work in the server (username:user and Password:login)
