@@ -24,4 +24,4 @@ This project contains both build version and Netbeans Project for the System.
  4.Login and start monitoring .     
 
 # Information about cluster:
- All the informations , design patterns and usuage is contained in a pptx file above.
+ All the informations , design patterns and usuage is contained in a pptx file named SuperComputingJournal.pptx above.
