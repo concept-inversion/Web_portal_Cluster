@@ -5,6 +5,7 @@
  */
 package Cluster;
 
+import java.io.IOException;
 import static java.lang.System.exit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -172,6 +173,8 @@ public class Pi extends javax.swing.JFrame {
         try {
             JobExecutor.main(data);
         } catch (InterruptedException ex) {
+            Logger.getLogger(Pi.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(Pi.class.getName()).log(Level.SEVERE, null, ex);
         }
         

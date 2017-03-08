@@ -18,14 +18,14 @@ public class Worker {
 
     Socket client1;
 
-    private Worker() {
+    public Worker() {
             String ip="192.168.0.100";
             //ip = JOptionPane.showInputDialog("Enter the Server IP:");
         while(true) {
              
             try {
            
-            client1 = new Socket("localhost", 11111);
+            client1 = new Socket("localhost", 11110);
             
 
             BufferedReader in = new BufferedReader(new InputStreamReader(client1.getInputStream()));

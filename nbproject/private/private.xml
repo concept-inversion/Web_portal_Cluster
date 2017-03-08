@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/concept-inversion/Documents/NetBeansProjects/Threaded_SC/src/Cluster/Worker.java</file>
-            <file>file:/C:/Users/concept-inversion/Documents/NetBeansProjects/Threaded_SC/src/Cluster/JobExecutor.java</file>
-            <file>file:/C:/Users/concept-inversion/Documents/NetBeansProjects/Threaded_SC/src/Cluster/Executor.java</file>
+            <file>file:/C:/Users/inversion/Documents/NetBeansProjects/Cluster-Computing/src/Cluster/JobExecutor.java</file>
+            <file>file:/C:/Users/inversion/Documents/NetBeansProjects/Cluster-Computing/src/Cluster/Worker.java</file>
+            <file>file:/C:/Users/inversion/Documents/NetBeansProjects/Cluster-Computing/src/Cluster/Pi.java</file>
         </group>
     </open-files>
 </project-private>

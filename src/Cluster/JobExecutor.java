@@ -4,6 +4,8 @@ This class divides the task and creates a queue of the tasks in hashmap to be ru
 package Cluster;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,13 +13,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import org.apfloat.Apfloat;
 import org.apfloat.ApfloatMath; 
 import javax.swing.JOptionPane;
 
 public class JobExecutor {
 
-    private static int port = 11111, maxConnections =100;
+    private static int port = 11110, maxConnections =100;
     private static final Date date = new Date();
     private static long startTime;
     public static ArrayList<Apfloat> Result = new ArrayList<>();
@@ -26,18 +33,36 @@ public class JobExecutor {
 //List<String> syncal = Collections.synchronizedList(new ArrayList<String>());
     // Listen for incoming connections and handle them
 
-    public static void main(String[] data ) throws InterruptedException {
+    public static void main( String []data)throws InterruptedException, IOException {
+  
+        Logger logger = Logger.getLogger("MyLog");  
+    FileHandler fh;  
+   
 
+        // This block configure the logger with handler and formatter  
+        fh = new FileHandler("D:/Log.txt",false);  
+        logger.addHandler(fh);
+        SimpleFormatter formatter = new SimpleFormatter();  
+        fh.setFormatter(formatter);  
+
+        // the following statement is used to log any messages  
+        logger.info("Log Started \n");  
+           
+
+   
+      
+ 
+       
         int id = 0;
 
-        
+
         
        
         try {
             //create job array
-           
+    
+    
             List threads = new ArrayList();  //create list of threads
-            
             long start =System.currentTimeMillis();
             //division on arraylist starts here
             Apfloat max = new Apfloat(maxConnections, 26);
@@ -50,13 +75,13 @@ public class JobExecutor {
             Apfloat c_in = step1.divide(max);    // 2 is max thread , c_in is client size
             Apfloat one = new Apfloat(1, 26);
             Apfloat chunk_size = h.multiply(c_in);
-            Apfloat e;
+            Apfloat f;
             Apfloat temp = new Apfloat(0, 26), sum = new Apfloat(0, 26); 
             
-            for (e = start1; e.compareTo(end1) == -1; e = e.add(chunk_size)) {
+            for (f = start1; f.compareTo(end1) == -1; f = f.add(chunk_size)) {
 
                 // TaskQueue taskid = new ;
-                TaskQueue task = new TaskQueue(e.toString(true), c_in.toString(true), h.toString(true));
+                TaskQueue task = new TaskQueue(f.toString(true), c_in.toString(true), h.toString(true));
                 tasklist.add(task);
                 id1.add(one);
             }
@@ -66,8 +91,13 @@ public class JobExecutor {
             }
             long end = System.currentTimeMillis();
             long total = end -start;
+            logger.log(Level.INFO, "\n Task Queue Generation Time : {0}ms ", total); 
             System.out.println("\n Task Queue Generation Time : " + total+" ms "); 
-             System.out.println("\n Task Queue Generated \n");   
+            
+            logger.log(Level.INFO,"\n Task Queue Generated \n");
+            System.out.println("\n Task Queue Generated \n");   
+            
+            logger.log(Level.CONFIG, "\n Notice: [{0}] Server started!", date.toString());
             System.out.println("Notice: [" + date.toString() + "] Server started!");
 
             ServerSocket listener = new ServerSocket(port);
@@ -88,6 +118,7 @@ public class JobExecutor {
                 Thread t = new Thread(pi,connector,name);  // create new thread using that object
                 InetAddress ip = server.getInetAddress();
                 System.out.println("\n Notice: [" + date.toString() + "] - Worker connected! ID: " + id+ "\t IP address"+ip);
+                logger.log(Level.INFO, "\n Notice: [{0}] - Worker connected! ID: {1}\t IP address{2}", new Object[]{date.toString(), id, ip});
                 t.start();                       //start the thread 
                threads.add(t);
 
@@ -99,17 +130,19 @@ public class JobExecutor {
 }
             
             System.out.println("/No of client connected is : " + id);
-            
+            logger.log(Level.INFO,"/No of client connected is : " + id);
             
             
             for (int i = 0; i < threads.size(); i++) //error may happen here
     {
         // Big number to wait so this can be debugged
          System.out.println("JOINING: " + threads.get(i));
-        ((Thread)threads.get(i)).join();
+         logger.log(Level.INFO, "JOINING: {0}", threads.get(i));
+         ((Thread)threads.get(i)).join();
         
     }
              System.out.println("All thread works finished ");
+             logger.log(Level.INFO,"All thread works finished ");
              long star = System.currentTimeMillis();
               Iterator itr = Result.iterator();
               Apfloat temper = new Apfloat(0,26);
@@ -127,18 +160,30 @@ public class JobExecutor {
     en = System.currentTimeMillis();
             long tota = en -star;
             System.out.println("\n Result collection and printing Time : " + tota+" ms "); 
-        System.out.println("\n The result is " +temper.toString(true));
-        long stopTime = System.currentTimeMillis();
+            logger.log(Level.INFO, "\n Result collection and printing Time : {0} ms ", tota); 
+            System.out.println("\n The result is " +temper.toString(true));
+            logger.log(Level.INFO, "\n The result is {0}", temper.toString(true));
+            long stopTime = System.currentTimeMillis();
         long totaltime= stopTime - startTime;
+        logger.log(Level.INFO, "\n Total time taken is : {0} ms", totaltime);
         System.out.println("\n Total time taken is : " + totaltime + " ms");
         Apfloat Pi = ApfloatMath.pi(100);
         Apfloat error = temper.subtract(Pi);
+        logger.log(Level.INFO, "\n The error in computed Value:  {0}", error.toString(true));
         System.out.println("\n The error in computed Value:  " +error.toString(true));
         JOptionPane.showMessageDialog(null ,"\n Value of Pi                        :  "+temper.toString(true)+ "\n"+"Error in Calculated value : "+ error.toString(true)+"\n Time taken : " + totaltime+ " ms");
+        
+    
+    logger.removeHandler(fh);   //must call h.close or a .LCK file will remain.
+
+        LogManager.getLogManager().reset();
+        fh.close();
         } catch (IOException ioe) {
             System.out.println("IOException on socket listen: " + ioe);
             ioe.printStackTrace();
         }
+   
+        
         
             
         
