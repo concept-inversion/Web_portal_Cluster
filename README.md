@@ -18,7 +18,7 @@ This project contains both build version and Netbeans Project for the System.
  # Monitoring System : 
   You will be able to monitor the system through the web portal . The portal will show all the events of the server including no. of tasks running, interaction with worker , result from them and result.    
  Steps: 
-        Install tomcat and xampp server.
-        Copy the fileprint.war file from santo_web/dist to Xampp/tomcat/webapps
-        Go to any web browser and type localhost:8080/fileprint
-        Login and start monitoring 
+1.Install tomcat and xampp server.
+2.Copy the fileprint.war file from santo_web/dist to Xampp/tomcat/webapps
+3.Go to any web browser and type localhost:8080/fileprint
+ 4.Login and start monitoring 
