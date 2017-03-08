@@ -6,12 +6,15 @@ This project contains both build version and Netbeans Project for the System.
 #For using in Netbeans : 
  Use the link https://github.com/concept-inversion/Web_portal_Cluster.git for cloning it.
  
+#For Running it :
  
-  # Requirements :
-     JRE should be pre-installed.
-    
-    
-   # Running it:
-   1. First of all , run the jar file from the worker folder. It runs the client which will perform works provided by the server.
-   2. Now, run the jar file from the Cluster Start folder. It runs the main server which provides a GUI feature for using the              system.
-   3. Start the web portal for monitoring the work in the server. 
+# Requirements :
+   JRE should be pre-installed.
+ First of all , run the jar file from the worker folder. It runs the client which will perform works provided by the                     server.You can run more than one instant of worker for better performance. (Note: Worker runs in backgroud)
+ Now, run the jar file from the Cluster Start folder. It runs the main server which provides a GUI feature for using the                   system.
+ Start the web portal for monitoring the work in the server (username:user and Password:login)
+# Using the GUI:
+   After starting the jar file from Cluster start folder , you will see a GUI with two options : For now , only option 1 will work to compute the value of PI. For finding value of PI , you will be asked to enter no. of steps for finding value of PI. More steps will result in more threads and more time.
+      
+ # Monitoring System : 
+  You will be able to monitor the system through the web portal . The portal will show all the events of the server including no. of tasks running, interaction with worker , result from them and result.    
