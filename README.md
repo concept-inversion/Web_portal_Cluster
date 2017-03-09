@@ -20,7 +20,7 @@ This project contains both build version and Netbeans Project for the System.
  Steps:   
 1.Install tomcat and xampp server.      
 2.Copy the santo_webportal.war file from santo_webportal/dist to Xampp/tomcat/webapps.        
-3.Go to any web browser and type localhost:8080/santo_webportal.       
+3.Go to any web browser and type localhost:8080/santo_webportal/login.       
  4.Login and start monitoring .     
 
 # Information about cluster:
